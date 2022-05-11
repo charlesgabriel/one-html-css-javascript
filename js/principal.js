@@ -5,11 +5,11 @@ document.title = novoTitulo;
 
 var trPaciente = document.querySelector("#primeiro-paciente");
 
-var tdPeso = trPaciente.querySelector(".info-peso");
-var peso = tdPeso.textContent;
+var peso = trPaciente.querySelector(".info-peso").textContent;
+// var peso = tdPeso.textContent;
 
-var tdAltura = trPaciente.querySelector(".info-altura");
-var altura = tdAltura.textContent;
+var altura = trPaciente.querySelector(".info-altura").textContent;
+// var altura = tdAltura.textContent;
 
 var imc = peso / (altura * altura);
 var tdImc = trPaciente.querySelector(".info-imc");
