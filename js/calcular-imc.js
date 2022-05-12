@@ -1,16 +1,3 @@
-function create(element) {
-    return document.createElement(element);
-}
-function query(item, id) {
-    return item.querySelector(id);
-}
-function queryAll(id) {
-    return document.querySelectorAll(id);
-}
-function queryContent(item, id) {
-    return item.querySelector(id).textContent;
-}
-
 var titulo = query(document, ".titulo");
 var novoTitulo = "Aparecida Nutricionista"
 titulo.textContent = novoTitulo;
@@ -40,7 +27,11 @@ for (let i = 0; i < pacientes.length; i++) {
         paciente.classList.add("paciente-invalido");
     }
     if(pesoValido && alturaValida) {
-        var imc = peso / (altura * altura);
-        tdImc.textContent = imc.toFixed(2);
+        var imc = calcularImc(peso, altura);
+        tdImc.textContent = imc;
     }
+}
+
+function calcularImc(peso, altura) {
+    return (peso / (altura * altura)).toFixed(2);
 }

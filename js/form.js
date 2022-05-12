@@ -1,16 +1,3 @@
-function create(element) {
-    return document.createElement(element);
-}
-function query(item, id) {
-    return item.querySelector(id);
-}
-function queryAll(id) {
-    return document.querySelectorAll(id);
-}
-function queryContent(item, id) {
-    return item.querySelector(id).textContent;
-}
-
 var botaoAdicionar = query(document, "#adicionar-paciente");
 botaoAdicionar.addEventListener("click", function(event) {
     event.preventDefault();
@@ -31,7 +18,7 @@ botaoAdicionar.addEventListener("click", function(event) {
     pesoTd.textContent = peso;
     alturaTd.textContent = altura;
     gorduraTd.textContent = gordura;
-    imcTd.textContent = 0;
+    imcTd.textContent = calcularImc(peso, altura);
 
     pacienteTr.appendChild(nomeTd);
     pacienteTr.appendChild(pesoTd);
