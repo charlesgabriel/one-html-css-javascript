@@ -1,20 +1,26 @@
-var titulo = document.querySelector(".titulo");
+function queryAll(id) {
+    return document.querySelectorAll(id);
+}
+function query(item, id) {
+    return item.querySelector(id);
+}
+function queryContent(item, id) {
+    return item.querySelector(id).textContent;
+}
+
+var titulo = query(document, ".titulo");
 var novoTitulo = "Aparecida Nutricionista"
 titulo.textContent = novoTitulo;
 document.title = novoTitulo;
 
-var pacientes = document.querySelectorAll(".paciente");
+
+var pacientes = queryAll(".paciente");
 
 for (let i = 0; i < pacientes.length; i++) {
     const paciente = pacientes[i];
-    
-    var peso = paciente.querySelector(".info-peso").textContent;
-    // var peso = tdPeso.textContent;
-    
-    var altura = paciente.querySelector(".info-altura").textContent;
-    // var altura = tdAltura.textContent;
-    
-    var tdImc = paciente.querySelector(".info-imc");
+    var peso = queryContent(paciente, ".info-peso");
+    var altura = queryContent(paciente, ".info-altura");
+    var tdImc = query(paciente, ".info-imc");
     
     var pesoValido = true;
     var alturaValida = true;
