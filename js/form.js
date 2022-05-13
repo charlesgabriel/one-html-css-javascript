@@ -3,11 +3,33 @@ botaoAdicionar.addEventListener("click", function(event) {
     event.preventDefault();
     var form = query(document, "#form-adiciona");
     var paciente = obtemPacienteForm(form);
+
+    var erros = validarPaciente(paciente);
+    if(erros.length > 0) {
+        exibirMensagemErro(erros);
+        return;
+    }
     var pacienteTr = montarTr(paciente);
     var tabela = query(document, "#tabela-pacientes");
     tabela.appendChild(pacienteTr);
     form.reset();
+    limparErros();
 });
+
+var ul = query(document, "#mensagem-erro");
+
+function limparErros() {
+    ul.innerHTML = "";
+}
+
+function exibirMensagemErro(erros) {
+    limparErros();
+    erros.forEach(function(erro) {
+        var li = create("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+}
 
 function obtemPacienteForm(form) {
     var paciente = {
@@ -41,4 +63,27 @@ function montarTd(dado, estilo) {
     td.classList.add(estilo);
     td.textContent = dado;
     return td;
+}
+
+function validarPaciente(paciente) {
+    var erros = [];
+    if(paciente.nome.length == 0) {
+        erros.push('O valor do campo "Nome" não pode ser em branco!');
+    }
+    if(paciente.peso.length == 0) {
+        erros.push('O valor do campo "Peso" não pode ser em branco!');
+    }
+    if(!analisarPeso(paciente.peso)) {
+        erros.push('O valor do campo "Peso" é inválido!');
+    }
+    if(paciente.altura.length == 0) {
+        erros.push('O valor do campo "Altura" não pode ser em branco!');
+    }
+    if(!analisarAltura(paciente.altura)) {
+        erros.push('O valor do campo "Altura" é inválido!');
+    }
+    if(paciente.gordura.length ==0) {
+        erros.push('O valor do campo "% de Gordura" não pode ser em branco!');
+    }
+    return erros;
 }
