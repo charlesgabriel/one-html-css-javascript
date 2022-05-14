@@ -141,3 +141,8 @@ button:disabled {
 .paciente-invalido {
 	background-color: lightcoral;
 }
+
+.fadeOut {
+	opacity: 0;
+	transition: 0.5s;
+}

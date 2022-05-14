@@ -1,7 +1,7 @@
-var botaoAdicionar = query(document, "#adicionar-paciente");
+var botaoAdicionar = query("#adicionar-paciente");
 botaoAdicionar.addEventListener("click", function(event) {
     event.preventDefault();
-    var form = query(document, "#form-adiciona");
+    var form = query("#form-adiciona");
     var paciente = obtemPacienteForm(form);
 
     var erros = validarPaciente(paciente);
@@ -10,13 +10,13 @@ botaoAdicionar.addEventListener("click", function(event) {
         return;
     }
     var pacienteTr = montarTr(paciente);
-    var tabela = query(document, "#tabela-pacientes");
+    var tabela = query("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
     form.reset();
     limparErros();
 });
 
-var ul = query(document, "#mensagem-erro");
+var ul = query("#mensagem-erro");
 
 function limparErros() {
     ul.innerHTML = "";

@@ -1,4 +1,4 @@
-var titulo = query(document, ".titulo");
+var titulo = query(".titulo");
 var novoTitulo = "Aparecida Nutricionista"
 titulo.textContent = novoTitulo;
 document.title = novoTitulo;
@@ -7,9 +7,9 @@ var pacientes = queryAll(".paciente");
 
 for (let i = 0; i < pacientes.length; i++) {
     const paciente = pacientes[i];
-    var peso = queryContent(paciente, ".info-peso");
-    var altura = queryContent(paciente, ".info-altura");
-    var tdImc = query(paciente, ".info-imc");
+    var peso = queryContent(".info-peso", paciente);
+    var altura = queryContent(".info-altura", paciente);
+    var tdImc = query(".info-imc", paciente);
     
     var pesoValido = analisarPeso(peso);
     var alturaValida = analisarAltura(altura);
