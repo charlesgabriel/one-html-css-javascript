@@ -9,12 +9,16 @@ botaoAdicionar.addEventListener("click", function(event) {
         exibirMensagemErro(erros);
         return;
     }
-    var pacienteTr = montarTr(paciente);
-    var tabela = query("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionarPacienteTabela(paciente);
     form.reset();
     limparErros();
 });
+
+function adicionarPacienteTabela(paciente) {
+    var pacienteTr = montarTr(paciente);
+    var tabela = query("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
 
 var ul = query("#mensagem-erro");
 
